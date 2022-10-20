@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json -o ",
+    "start": "ng serve --port 3000 --proxy-config proxy.conf.json -o ",
     "build": "ng build --configuration production",
     "build:stats": "ng build --configuration production --stats-json",
     "analyze": "webpack-bundle-analyzer dist/app-base/stats.json",
