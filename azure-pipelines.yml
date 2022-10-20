@@ -28,13 +28,7 @@ jobs:
     displayName: npm install
     inputs:
       workingDir: angular-base
-  - task: Npm@1
-    displayName: npm run start
-    inputs:
-      command: 'custom'
-      workingDir: 'angular-base'
-      customCommand: 'run start'
-      verbose: false      
+
   - script: 'npm run start'
     workingDirectory: 'angular-base'
     displayName: 'Start application'  
