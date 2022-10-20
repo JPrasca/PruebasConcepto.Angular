@@ -29,7 +29,7 @@ jobs:
     inputs:
       workingDir: angular-base
 
-  - script: 'npm run start && npm run e2e:run'
+  - script: 'npm run e2e:run'
     workingDirectory: 'angular-base'
     displayName: 'Start application'  
   - task: Npm@1
