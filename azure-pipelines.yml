@@ -1,0 +1,66 @@
+trigger:
+  branches:
+    include:
+    - refs/heads/WO20221020_CeibaBlock
+name: $(Build.SourceBranchName)_$(date:yyyyMMdd)$(rev:.r)
+
+pool:
+  vmImage: ubuntu-latest
+
+jobs:
+- job: Job_1
+  displayName: Agent job 1
+  pool:
+    name: Azure Pipelines
+  steps:
+  - checkout: self
+    fetchDepth: 1
+
+    
+  - task: NodeTool@0
+    displayName: use node 16.x
+    inputs:
+        versionSource: 'spec'
+        versionSpec: '16.x'
+        checkLatest: true
+
+  - task: Npm@1
+    displayName: npm install
+    inputs:
+      workingDir: angular-base
+  - task: Npm@1
+    displayName: npm run start
+    inputs:
+      command: 'custom'
+      workingDir: 'angular-base'
+      customCommand: 'run start'
+      verbose: false      
+  - script: 'npm run start'
+    workingDirectory: 'angular-base'
+    displayName: 'Start application'  
+  - script: 'npm run e2e'
+    workingDirectory: 'angular-base'
+    displayName: 'Start test'
+  - task: Npm@1
+    displayName: npm build
+    inputs:
+      command: custom
+      workingDir: angular-base
+      verbose: true
+      customCommand: run build
+      publishRegistry: useFeed
+      publishFeed: 0bcdd404-f524-4f83-8035-0b6d1e63bd16
+      
+  
+  - task: ArchiveFiles@2
+    displayName: Archive files
+    inputs:
+      rootFolderOrFile: $(System.DefaultWorkingDirectory)/**/dist
+      includeRootFolder: false
+      verbose: true
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish artifacts: drop'
+    inputs:
+      TargetPath: '\\my\share\$(Build.DefinitionName)\$(Build.BuildNumber)'
+...
+
