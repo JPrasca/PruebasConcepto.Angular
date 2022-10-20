@@ -32,7 +32,7 @@ jobs:
   - script: 'npm run start&'
     workingDirectory: 'angular-base'
     displayName: 'Start application'  
-  - script: 'npm run e2e:run'
+  - script: 'npm run e2e:run&'
     workingDirectory: 'angular-base'
     displayName: 'Start test'
   - task: Npm@1
