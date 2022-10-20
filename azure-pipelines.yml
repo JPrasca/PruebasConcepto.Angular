@@ -34,14 +34,13 @@ jobs:
       command: 'custom'
       workingDir: 'angular-base'
       customCommand: 'run start'
-      verbose: false
-  - task: Npm@1
-    displayName: npm run e2e
-    inputs:
-      command: 'custom'
-      workingDir: 'angular-base'
-      customCommand: 'run e2e'
-      verbose: false
+      verbose: false      
+  - script: 'npm run start'
+    workingDirectory: 'angular-base'
+    displayName: 'Start application'  
+  - script: 'npm run e2e'
+    workingDirectory: 'angular-base'
+    displayName: 'Start test'
   - task: Npm@1
     displayName: npm build
     inputs:
