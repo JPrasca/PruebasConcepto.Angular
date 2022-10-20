@@ -1,6 +1,6 @@
 export const page = {
   irFormularioCrear: () => {
-    cy.visit('/');
+    cy.visit('http://localhost:4200/');
     cy.get('app-navbar > nav > a:nth-child(2)').click();
     cy.get('#linkCrearProducto').click();
   },
