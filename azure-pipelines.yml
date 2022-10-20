@@ -1,7 +1,7 @@
 trigger:
   branches:
     include:
-    - refs/heads/WO20221020_CeibaBlock
+    - refs/heads/main
 name: $(Build.SourceBranchName)_$(date:yyyyMMdd)$(rev:.r)
 
 pool:
