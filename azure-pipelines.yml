@@ -31,7 +31,7 @@ jobs:
 
   - script: 'npm run e2e:run'
     workingDirectory: 'angular-base'
-    displayName: 'Start application'  
+    displayName: 'Start application tests on cypress'  
   - task: Npm@1
     displayName: npm build
     inputs:
