@@ -46,7 +46,7 @@ jobs:
   - task: ArchiveFiles@2
     displayName: Archive files
     inputs:
-      rootFolderOrFile: $(System.DefaultWorkingDirectory)/**/dist
+      rootFolderOrFile: $(System.DefaultWorkingDirectory)/angular-base/dist
       includeRootFolder: false
       verbose: true
   - task: PublishBuildArtifacts@1
